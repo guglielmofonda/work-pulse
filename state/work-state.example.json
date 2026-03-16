@@ -1,0 +1,130 @@
+{
+  "version": 2,
+  "mode": "working",
+  "today": "2026-03-16",
+  "cycleNumber": 7,
+  "lastPulseAt": "2026-03-16T10:20:00-07:00",
+  "lastPulseType": "pulse",
+  "guard": {
+    "lockFile": "/tmp/work-pulse.lock"
+  },
+  "plan": {
+    "createdAt": "2026-03-16T09:00:00-07:00",
+    "todaysGoal": "Ship deployment guide + build MCP server MVP",
+    "priorityQueue": [
+      {
+        "id": "task-1",
+        "description": "Create deployment-ready package with instructions",
+        "status": "done",
+        "priority": 1,
+        "blockedOn": null,
+        "dependsOn": null,
+        "completedAt": "2026-03-16T09:01:00-07:00",
+        "output": "DEPLOYMENT-GUIDE.md (commit 1408bc3)"
+      },
+      {
+        "id": "task-2",
+        "description": "Run visibility audit (pre-deployment baseline)",
+        "status": "done",
+        "priority": 2,
+        "blockedOn": null,
+        "dependsOn": null,
+        "completedAt": "2026-03-16T09:35:00-07:00",
+        "output": "audits/baseline-2026-03-16.md (commit 296ccac)"
+      },
+      {
+        "id": "task-3",
+        "description": "Audit site structure for deployment targets",
+        "status": "done",
+        "priority": 3,
+        "blockedOn": null,
+        "dependsOn": null,
+        "completedAt": "2026-03-16T09:02:00-07:00",
+        "output": "audits/site-structure.md (commit 2be5448)"
+      },
+      {
+        "id": "task-4",
+        "description": "Define MVP scope for API server",
+        "status": "done",
+        "priority": 4,
+        "blockedOn": null,
+        "dependsOn": null,
+        "completedAt": "2026-03-16T09:50:00-07:00",
+        "output": "exploration/api-server-mvp.md (commit 5faba11)"
+      },
+      {
+        "id": "task-5",
+        "description": "Build API server MVP (parallel track)",
+        "status": "done",
+        "priority": 5,
+        "blockedOn": null,
+        "dependsOn": "task-4",
+        "completedAt": "2026-03-16T10:18:00-07:00",
+        "output": "api-server/ (commit d83b280) - 3 endpoints + 3 resources"
+      }
+    ]
+  },
+  "activeSubAgents": [],
+  "completedThisCycle": [
+    {
+      "label": "api-server-build",
+      "output": "API server MVP complete: 3 endpoints + 3 resources. 1,248 lines. Ready for deploy.",
+      "commit": "d83b280"
+    }
+  ],
+  "completedToday": [
+    {
+      "label": "deployment-package",
+      "output": "DEPLOYMENT-GUIDE.md with copy-paste instructions",
+      "commit": "1408bc3"
+    },
+    {
+      "label": "site-audit",
+      "output": "Mapped all 9 deliverables to deployment targets",
+      "commit": "2be5448"
+    },
+    {
+      "label": "visibility-baseline",
+      "output": "Baseline complete — currently invisible in AI search results",
+      "commit": "296ccac"
+    },
+    {
+      "label": "api-spec",
+      "output": "MVP scope: 3 endpoints + 3 resources, 8-12 hours to ship",
+      "commit": "5faba11"
+    }
+  ],
+  "failedToday": [
+    {
+      "label": "visibility-audit-v1",
+      "reason": "Request timed out",
+      "retrying": true
+    }
+  ],
+  "checkpoints": [
+    { "type": "morning-standup", "time": "2026-03-16T09:01:54-07:00" },
+    { "type": "pulse", "time": "2026-03-16T09:06:09-07:00" },
+    { "type": "pulse", "time": "2026-03-16T09:21:58-07:00" },
+    { "type": "pulse", "time": "2026-03-16T09:35:31-07:00" },
+    { "type": "pulse", "time": "2026-03-16T09:50:35-07:00" },
+    { "type": "pulse", "time": "2026-03-16T10:05:00-07:00" }
+  ],
+  "blockers": [
+    {
+      "id": "blocker-1",
+      "description": "Deployment access to production site — 9 deliverables waiting",
+      "since": "2026-03-13",
+      "owner": "Team lead"
+    }
+  ],
+  "humanInputQueue": [
+    "Deployment access or credentials for production site"
+  ],
+  "metrics": {
+    "subAgentsSpawned": 7,
+    "subAgentsCompleted": 5,
+    "subAgentsFailed": 1,
+    "deliverablesPushed": 5,
+    "checkpointsPosted": 6
+  }
+}

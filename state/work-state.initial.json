@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "mode": "day-complete",
+  "today": "2026-01-01",
+  "cycleNumber": 0,
+  "lastPulseAt": null,
+  "lastPulseType": null,
+  "guard": {
+    "lockFile": "/tmp/work-pulse.lock"
+  },
+  "plan": {
+    "createdAt": null,
+    "todaysGoal": null,
+    "priorityQueue": []
+  },
+  "activeSubAgents": [],
+  "completedThisCycle": [],
+  "completedToday": [],
+  "checkpoints": [],
+  "blockers": [],
+  "humanInputQueue": [],
+  "metrics": {
+    "subAgentsSpawned": 0,
+    "subAgentsCompleted": 0,
+    "subAgentsFailed": 0,
+    "deliverablesPushed": 0,
+    "checkpointsPosted": 0
+  }
+}
