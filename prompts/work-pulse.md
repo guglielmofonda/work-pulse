@@ -40,7 +40,14 @@ STEP 6: COMMIT PROGRESS
 If deliverables were produced:
 cd $PROJECT_PATH && git add -A && git commit -m "<message>" && git push
 
-STEP 7: POST CHECKPOINT
+STEP 7: CHECK REPORTING PREFERENCES
+Read the reporting section from work-state.json. Decide whether to post a checkpoint:
+- If reporting.pausedUntil is set and current time (via $(date)) < pausedUntil: SKIP checkpoint.
+- If reporting.intervalMinutes > 15: only post when cycleNumber is divisible by (intervalMinutes / 15). E.g. intervalMinutes=30 means post on even cycles only.
+- If reporting.quietMode is true: only post if blockers or humanInputQueue have items.
+If any condition says skip, go directly to STEP 9. Otherwise proceed to STEP 8.
+
+STEP 8: POST CHECKPOINT
 Send to Slack <YOUR_CHANNEL_ID>:
 
 "Cycle <N> — <time>
@@ -51,10 +58,10 @@ ROLLING: <summary> / BLOCKED: <blocker>
 
 Needs: <list or 'None'>"
 
-Record in checkpoints. Increment cycleNumber.
+Record in checkpoints.
 
-STEP 8: UPDATE & UNLOCK
-Move completedThisCycle to completedToday. Update lastPulseAt, lastPulseType, metrics.
+STEP 9: UPDATE & UNLOCK
+Increment cycleNumber. Move completedThisCycle to completedToday. Update lastPulseAt, lastPulseType, metrics.
 Write work-state.json.
 Run: bash $WORKSPACE_PATH/scripts/work-pulse-unlock.sh
 

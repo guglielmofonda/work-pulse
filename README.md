@@ -132,7 +132,9 @@ export WORKSPACE_PATH="<YOUR_WORKSPACE_PATH>"
 
 ## Customization
 
-**Change the interval.** The default is every 15 minutes. For longer cycles, edit the cron expression. For 30-minute pulses: `5,35 9-16 * * 1-5`. For hourly: `5 9-16 * * 1-5`. Adjust the guard's `MAX_AGE_SECONDS` accordingly (it should be ~80% of your interval).
+**Control reporting via Slack.** Tell your agent "pause reports until 2pm" or "switch to 30 min updates" or "go quiet" — it writes preferences to `work-state.json` and the pulse respects them. Work continues at full speed; only the checkpoint noise changes. Say "back to normal" to reset. See `workspace/AGENTS.md` for the full command table.
+
+**Change the default interval.** The default is every 15 minutes. For longer cycles, edit the cron expression. For 30-minute pulses: `5,35 9-16 * * 1-5`. For hourly: `5 9-16 * * 1-5`. Adjust the guard's `MAX_AGE_SECONDS` accordingly (it should be ~80% of your interval).
 
 **Add QA review.** Use the included `skills/qa-agent/` skill to spawn a QA sub-agent before each checkpoint. The QA agent reviews work products against 5 dimensions (completeness, rigor, accuracy, actionability, quality) and returns a SHIP/REVISE/REDO verdict.
 

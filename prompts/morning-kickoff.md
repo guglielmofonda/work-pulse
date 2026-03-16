@@ -51,6 +51,7 @@ Write $PROJECT_PATH/work-state.json with:
   "checkpoints": [],
   "blockers": [],
   "humanInputQueue": [],
+  "reporting": {"intervalMinutes": 15, "pausedUntil": null, "quietMode": false},
   "metrics": {"subAgentsSpawned": 0, "subAgentsCompleted": 0, "subAgentsFailed": 0, "deliverablesPushed": 0, "checkpointsPosted": 0}
 }
 

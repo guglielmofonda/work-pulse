@@ -324,6 +324,36 @@ Key fields:
 - `completedToday`: All finished work with output locations
 - `checkpoints`: Log of Slack checkpoints posted
 - `cycleNumber`: Auto-incrementing counter
+- `reporting`: Checkpoint frequency/pause controls (set by human via Slack)
+
+### Reporting Controls (Human can adjust via Slack)
+
+Your human can change reporting behavior by messaging you on Slack. When you receive these commands, update `work-state.json` accordingly:
+
+| What human says | What you do |
+|---|---|
+| "pause reports until 2pm" | Set `reporting.pausedUntil` to the ISO timestamp for 2pm today |
+| "don't update me until 3" | Set `reporting.pausedUntil` to 3pm today |
+| "switch to 30 min updates" | Set `reporting.intervalMinutes` to 30 |
+| "update me every hour" | Set `reporting.intervalMinutes` to 60 |
+| "go quiet" / "quiet mode" | Set `reporting.quietMode` to true |
+| "back to normal" / "resume" | Reset all: `intervalMinutes=15, pausedUntil=null, quietMode=false` |
+| "status?" / "what's happening?" | Post an immediate checkpoint regardless of settings |
+
+**Always confirm:** "Got it — pausing reports until 2pm. Work continues, I'll check back in then."
+
+The `reporting` section in work-state.json:
+```json
+"reporting": {
+  "intervalMinutes": 15,
+  "pausedUntil": null,
+  "quietMode": false
+}
+```
+
+- `intervalMinutes`: Controls how often checkpoints post. Pulse still fires every 15 min for work, but only posts when `cycleNumber % (intervalMinutes / 15) === 0`.
+- `pausedUntil`: ISO timestamp. If now < pausedUntil, skip checkpoint. Work continues silently.
+- `quietMode`: Only post when there are blockers or humanInputQueue items. Skip "still rolling" updates.
 
 ### Guard Protocol
 

@@ -19,6 +19,11 @@
   "checkpoints": [],
   "blockers": [],
   "humanInputQueue": [],
+  "reporting": {
+    "intervalMinutes": 15,
+    "pausedUntil": null,
+    "quietMode": false
+  },
   "metrics": {
     "subAgentsSpawned": 0,
     "subAgentsCompleted": 0,

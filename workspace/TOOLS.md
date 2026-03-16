@@ -31,7 +31,14 @@ Releases the lock. Always run this, even on errors.
 ```
 $PROJECT_PATH/work-state.json
 ```
-Persists across all work cycles. Contains: mode, priorityQueue, activeSubAgents, completedToday, checkpoints, blockers, metrics. See AGENTS.md "Work Pulse System" section for full schema.
+Persists across all work cycles. Contains: mode, priorityQueue, activeSubAgents, completedToday, checkpoints, blockers, reporting, metrics. See AGENTS.md "Work Pulse System" section for full schema.
+
+**Reporting controls** (in work-state.json `reporting` section):
+- `intervalMinutes`: 15 (default), 30, or 60 — how often to post checkpoints
+- `pausedUntil`: ISO timestamp or null — suppress checkpoints until this time
+- `quietMode`: false (default) or true — only post when blockers/human input needed
+
+Human sets these via Slack commands (see AGENTS.md "Reporting Controls"). Morning kickoff resets to defaults each day.
 
 ---
 

@@ -120,6 +120,11 @@
   "humanInputQueue": [
     "Deployment access or credentials for production site"
   ],
+  "reporting": {
+    "intervalMinutes": 15,
+    "pausedUntil": null,
+    "quietMode": false
+  },
   "metrics": {
     "subAgentsSpawned": 7,
     "subAgentsCompleted": 5,
